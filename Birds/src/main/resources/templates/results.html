@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>All Birds</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+	<form>
+		<table class="center">
+			<tr>
+				<th>ID</th>
+				<th>Common Name</th>
+				<th>Scientific Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr th:each="currentBird : ${birds}">
+				<td th:text="${currentBird.birdID}"></td>
+				<td th:text="${currentBird.commonName}"></td>
+				<td th:text="${currentBird.scientificName}"></td>
+				<td><a th:href="@{/edit/{id}(id=${currentBird.birdID})}" class="btn btn-secondary">Edit</a></td>
+				<td><a th:href="@{/delete/{id}(id=${currentBird.birdID})}" class="btn btn-secondary">Delete</a></td>
+			</tr>
+		</table>
+		<div class="form-group" align="center">
+			<a href="../addBird" class="btn btn-primary">Add a New Bird</a>
+		</div>
+	</form>
+</body>
+</html>

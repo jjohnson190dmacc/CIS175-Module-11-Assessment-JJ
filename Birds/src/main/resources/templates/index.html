@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Add Bird</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div align="center" class="col-md-12">
+		<h2>Add Bird</h2>
+		<div class="col-md-6">
+			<form action="#" th:action="@{/update/{id}}" th:object="${bird}" method="post">
+			    <div class="form-group">
+        			<input type="number" th:field="*{birdID}" hidden=true />
+    			</div>
+				<div class="form-group">
+					<label for="commonName">Common Name:</label>
+					<input type="text" class="form-control" id="commonName" th:field="*{commonName}">
+					<p class="alert alert-danger" th:if="${#fields.hasErrors('commonName')}" th:errors="*{commonName}">
+				</div>
+				<div class="form-group">
+					<label for="scientificName">Scientific Name:</label>
+					<input type="text" class="form-control" id="scientificName" th:field="*{scientificName}">
+					<p class="alert alert-danger" th:if="${#fields.hasErrors('scientificName')}" th:errors="*{scientificName}">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<a href="/viewAll" class="btn btn-primary">View All Birds</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
